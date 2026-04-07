@@ -1,21 +1,18 @@
 const Footer = () => (
-  <footer className="bg-foreground text-primary-foreground py-12">
-    <div className="container mx-auto px-4 lg:px-8">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <span className="text-xl font-bold">Delegate</span>
-          <p className="text-sm opacity-70 mt-1">
-            Il modo semplice per avere un sito professionale.
-          </p>
-        </div>
-        <div className="flex items-center gap-6 text-sm opacity-70">
-          <a href="#problema" className="hover:opacity-100 transition-opacity">Problema</a>
-          <a href="#pacchetti" className="hover:opacity-100 transition-opacity">Pacchetti</a>
-          <a href="#contatto" className="hover:opacity-100 transition-opacity">Contatti</a>
-        </div>
-      </div>
-      <div className="mt-8 pt-6 border-t border-primary-foreground/10 text-center text-xs opacity-50">
-        © {new Date().getFullYear()} Delegate. Tutti i diritti riservati.
+  <footer className="bg-secondary/40 py-14">
+    <div className="container mx-auto px-4 lg:px-8 text-center space-y-1.5 text-sm text-muted-foreground">
+      <p className="font-semibold text-foreground">Delegate S.r.l.</p>
+      <p>C.F./P.IVA: 02826580025</p>
+      <p>Corso Vercelli 82, 13045 Gattinara (VC), Italia</p>
+      <p>
+        PEC:{" "}
+        <a href="mailto:delegateeusrl@pec.it" className="hover:text-foreground transition-colors">
+          delegateeusrl@pec.it
+        </a>
+      </p>
+      <div className="pt-3 space-y-1">
+        <p>CCIAA: Monte Rosa Laghi Alto Piemonte</p>
+        <p>Capitale sociale: € 10.000 i.v.</p>
       </div>
     </div>
   </footer>

@@ -9,7 +9,7 @@ const cases = [
     desc: "Servizio manutenzione auto a domicilio con necessità di ricevere richieste rapide dai clienti.",
     why: "Struttura semplice con WhatsApp subito visibile per ricevere richieste immediate.",
     result: "Clienti che contattano direttamente dal sito senza passare da telefonate confuse.",
-    url: "https://motorediretto.it",
+    url: "https://www.motorediretto.com/",
   },
   {
     name: "Sangiorgi Trasporti",
@@ -17,7 +17,7 @@ const cases = [
     desc: "Azienda di trasporti che aveva bisogno di presentarsi in modo professionale online.",
     why: "Layout professionale pensato per trasmettere affidabilità a clienti aziendali.",
     result: "Presenza online chiara e richieste di contatto più ordinate.",
-    url: "https://sangiorgitrasporti.it",
+    url: "https://sangiorgitrasporti.com/",
   },
 ];
 
