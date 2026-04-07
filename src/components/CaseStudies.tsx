@@ -1,15 +1,23 @@
 import { ExternalLink } from "lucide-react";
+import motoredirettoImg from "@/assets/motorediretto.png";
+import sangiorgiImg from "@/assets/sangiorgi.png";
 
 const cases = [
   {
     name: "MotoreDiretto",
-    desc: "Officina meccanica che aveva bisogno di farsi trovare online dai clienti della zona.",
-    result: "Più richieste dirette dal sito, meno telefonate confuse.",
+    image: motoredirettoImg,
+    desc: "Servizio manutenzione auto a domicilio con necessità di ricevere richieste rapide dai clienti.",
+    why: "Struttura semplice con WhatsApp subito visibile per ricevere richieste immediate.",
+    result: "Clienti che contattano direttamente dal sito senza passare da telefonate confuse.",
+    url: "https://motorediretto.it",
   },
   {
     name: "Sangiorgi Trasporti",
-    desc: "Azienda di trasporti che non aveva un sito web e perdeva opportunità.",
-    result: "Presenza online professionale e richieste di preventivo ordinate.",
+    image: sangiorgiImg,
+    desc: "Azienda di trasporti che aveva bisogno di presentarsi in modo professionale online.",
+    why: "Layout professionale pensato per trasmettere affidabilità a clienti aziendali.",
+    result: "Presenza online chiara e richieste di contatto più ordinate.",
+    url: "https://sangiorgitrasporti.it",
   },
 ];
 
@@ -23,26 +31,53 @@ const CaseStudies = () => (
         Alcuni esempi di attività che abbiamo aiutato.
       </p>
 
-      <div className="mt-14 grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <div className="mt-14 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {cases.map((c) => (
           <div
             key={c.name}
-            className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition-shadow"
+            className="bg-card border border-border rounded-2xl overflow-hidden"
           >
-            {/* Placeholder for screenshot */}
-            <div className="h-40 bg-muted flex items-center justify-center">
-              <span className="text-muted-foreground text-sm">Screenshot del sito</span>
-            </div>
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="font-bold text-foreground">{c.name}</h3>
-                <ExternalLink className="h-4 w-4 text-muted-foreground" />
+            {/* Screenshot */}
+            <img
+              src={c.image}
+              alt={`Screenshot del sito ${c.name}`}
+              className="w-full h-48 object-cover object-top"
+              loading="lazy"
+            />
+
+            <div className="p-6 space-y-4">
+              {/* Nome progetto */}
+              <h3 className="text-lg font-bold text-foreground">{c.name}</h3>
+
+              {/* Descrizione */}
+              <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+
+              {/* Perché è stato fatto così */}
+              <div className="bg-muted/50 rounded-lg p-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Perché è stato fatto così
+                </span>
+                <p className="mt-1 text-sm text-foreground">{c.why}</p>
               </div>
-              <p className="text-sm text-muted-foreground mb-3">{c.desc}</p>
-              <div className="flex items-start gap-2 bg-emerald-50 rounded-lg p-3">
-                <span className="text-emerald-600 font-medium text-sm">Risultato:</span>
-                <span className="text-sm text-emerald-700">{c.result}</span>
+
+              {/* Risultato */}
+              <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                  Risultato
+                </span>
+                <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-300">{c.result}</p>
               </div>
+
+              {/* CTA */}
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+              >
+                Guarda il sito
+                <ExternalLink className="h-4 w-4" />
+              </a>
             </div>
           </div>
         ))}
