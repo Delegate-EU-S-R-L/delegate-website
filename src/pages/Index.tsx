@@ -7,6 +7,7 @@ import HowItWorks from "@/components/HowItWorks";
 import CaseStudies from "@/components/CaseStudies";
 import WhyDelegate from "@/components/WhyDelegate";
 import FinalCTA from "@/components/FinalCTA";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -21,6 +22,7 @@ const Index = () => (
     <CaseStudies />
     <WhyDelegate />
     <FinalCTA />
+    <ContactSection />
     <Footer />
     <WhatsAppButton />
   </>
