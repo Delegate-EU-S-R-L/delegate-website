@@ -23,7 +23,7 @@ const FinalCTA = () => (
             const whatsappMsg = encodeURIComponent(
               `Ciao, sono ${name}. ${message} (Tel: ${phone})`
             );
-            window.open(`https://wa.me/393000000000?text=${whatsappMsg}`, "_blank");
+            window.open(`https://wa.me/393513317239?text=${whatsappMsg}`, "_blank");
           }}
         >
           <div>
