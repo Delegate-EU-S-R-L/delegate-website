@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Monitor, Smartphone } from "lucide-react";
+import { MessageCircle, Globe, CheckCircle } from "lucide-react";
+import motoredirettoImg from "@/assets/motorediretto.png";
 
 const Hero = () => (
   <section className="pt-28 pb-20 md:pt-36 md:pb-28 bg-secondary/30">
@@ -22,37 +23,60 @@ const Hero = () => (
         </div>
       </div>
 
-      {/* Minimal device mockup */}
-      <div className="mt-16 flex items-end justify-center gap-6 animate-fade-in-delay-2">
-        <div className="hidden sm:block w-64 h-44 rounded-lg border-2 border-border bg-card shadow-lg flex items-center justify-center">
-          <div className="p-4 space-y-2">
-            <div className="flex items-center gap-2">
-              <Monitor className="h-4 w-4 text-primary" />
-              <div className="h-2 w-20 rounded bg-primary/20" />
-            </div>
-            <div className="h-2 w-full rounded bg-muted" />
-            <div className="h-2 w-3/4 rounded bg-muted" />
-            <div className="h-2 w-1/2 rounded bg-muted" />
-            <div className="mt-3 h-6 w-24 rounded-full bg-accent/80" />
+      {/* Real content: site screenshot + WhatsApp chat simulation */}
+      <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto animate-fade-in-delay-2">
+        {/* Block 1 — Real site screenshot */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <Globe className="h-4 w-4 text-primary" />
+            Il tuo sito, semplice e professionale
+          </div>
+          <div className="rounded-xl border border-border bg-card shadow-md overflow-hidden">
+            <img
+              src={motoredirettoImg}
+              alt="Esempio di sito web creato da Delegate"
+              className="w-full h-auto object-cover"
+              loading="eager"
+            />
           </div>
         </div>
-        <div className="w-32 h-56 rounded-2xl border-2 border-border bg-card shadow-lg">
-          <div className="p-3 space-y-2">
-            <div className="flex items-center gap-1">
-              <Smartphone className="h-3 w-3 text-primary" />
-              <div className="h-1.5 w-12 rounded bg-primary/20" />
+
+        {/* Block 2 — WhatsApp chat simulation */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <MessageCircle className="h-4 w-4 text-primary" />
+            Risultato: richieste chiare e dirette
+          </div>
+          <div className="rounded-xl border border-border bg-card shadow-md p-5 space-y-4">
+            {/* Simulated chat bubbles */}
+            <div className="space-y-3">
+              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm text-foreground">
+                Ciao, vorrei un preventivo
+              </div>
+              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm text-foreground">
+                <p>📍 Zona: Novara</p>
+                <p>🔧 Tipo lavoro: impianto elettrico</p>
+              </div>
+              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm text-foreground">
+                Potete venire questa settimana?
+              </div>
             </div>
-            <div className="h-1.5 w-full rounded bg-muted" />
-            <div className="h-1.5 w-3/4 rounded bg-muted" />
-            <div className="h-1.5 w-1/2 rounded bg-muted" />
-            <div className="mt-2 h-5 w-16 rounded-full bg-accent/80" />
-            <div className="mt-4 space-y-1.5">
-              <div className="h-1.5 w-full rounded bg-muted" />
-              <div className="h-1.5 w-2/3 rounded bg-muted" />
+
+            {/* Result indicator */}
+            <div className="flex items-center gap-2 pt-2 border-t border-border">
+              <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+              <span className="text-sm font-medium text-foreground">
+                Richiesta ricevuta in modo chiaro
+              </span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Supporting text */}
+      <p className="mt-6 text-center text-sm text-muted-foreground max-w-xl mx-auto animate-fade-in-delay-2">
+        Il cliente capisce cosa fai e ti contatta subito, senza confusione.
+      </p>
     </div>
   </section>
 );
