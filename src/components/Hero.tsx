@@ -1,84 +1,100 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Globe, CheckCircle } from "lucide-react";
-import motoredirettoImg from "@/assets/motorediretto.png";
+import { MessageCircle } from "lucide-react";
 
-const Hero = () => (
-  <section className="pt-28 pb-20 md:pt-36 md:pb-28 bg-secondary/30">
-    <div className="container mx-auto px-4 lg:px-8">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground animate-fade-in">
-          Dai valore a ciò che fai.
-        </h1>
-        <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed animate-fade-in-delay-1">
-          Realizziamo siti web semplici e professionali per farti trovare online
-          e permettere ai clienti di contattarti facilmente.
-        </p>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-delay-2">
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-8 text-base">
-            <a href="#contatto">Richiedi una consulenza</a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-full px-8 text-base">
-            <a href="#esempi">Guarda un esempio</a>
-          </Button>
-        </div>
-      </div>
+const Hero = () => {
+  const [name, setName] = useState("");
+  const [activity, setActivity] = useState("");
+  const [message, setMessage] = useState("");
 
-      {/* Real content: site screenshot + WhatsApp chat simulation */}
-      <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto animate-fade-in-delay-2">
-        {/* Block 1 — Real site screenshot */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <Globe className="h-4 w-4 text-primary" />
-            Il tuo sito, semplice e professionale
-          </div>
-          <div className="rounded-xl border border-border bg-card shadow-md overflow-hidden">
-            <img
-              src={motoredirettoImg}
-              alt="Esempio di sito web creato da Delegate"
-              className="w-full h-auto object-cover"
-              loading="eager"
-            />
-          </div>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const parts = [
+      `Ciao, sono ${name || "[Nome]"}.`,
+      activity ? `La mia attività: ${activity}.` : "",
+      message || "",
+      "Ho visto il vostro sito e vorrei informazioni per creare un sito web.",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    const url = `https://wa.me/393513317239?text=${encodeURIComponent(parts)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <section className="pt-28 pb-20 md:pt-36 md:pb-28 bg-secondary/30">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground animate-fade-in">
+            Dai valore a ciò che fai.
+          </h1>
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed animate-fade-in-delay-1">
+            Realizziamo siti web semplici e professionali per farti trovare online
+            e permettere ai clienti di contattarti facilmente.
+          </p>
         </div>
 
-        {/* Block 2 — WhatsApp chat simulation */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <MessageCircle className="h-4 w-4 text-primary" />
-            Risultato: richieste chiare e dirette
-          </div>
-          <div className="rounded-xl border border-border bg-card shadow-md p-5 space-y-4">
-            {/* Simulated chat bubbles */}
-            <div className="space-y-3">
-              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm text-foreground">
-                Ciao, vorrei un preventivo
-              </div>
-              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm text-foreground">
-                <p>📍 Zona: Novara</p>
-                <p>🔧 Tipo lavoro: impianto elettrico</p>
-              </div>
-              <div className="bg-muted rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%] text-sm text-foreground">
-                Potete venire questa settimana?
-              </div>
+        <div className="mt-12 max-w-md mx-auto animate-fade-in-delay-2">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="hero-name" className="block text-sm font-medium text-foreground mb-1">
+                Nome *
+              </label>
+              <input
+                id="hero-name"
+                type="text"
+                required
+                maxLength={100}
+                className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                placeholder="Il tuo nome"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
-            {/* Result indicator */}
-            <div className="flex items-center gap-2 pt-2 border-t border-border">
-              <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-              <span className="text-sm font-medium text-foreground">
-                Richiesta ricevuta in modo chiaro
-              </span>
+            <div>
+              <label htmlFor="hero-activity" className="block text-sm font-medium text-foreground mb-1">
+                Attività / Azienda
+              </label>
+              <input
+                id="hero-activity"
+                type="text"
+                maxLength={150}
+                className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                placeholder="Es. elettricista, ristorante, negozio..."
+                value={activity}
+                onChange={(e) => setActivity(e.target.value)}
+              />
             </div>
-          </div>
+
+            <div>
+              <label htmlFor="hero-message" className="block text-sm font-medium text-foreground mb-1">
+                Messaggio
+              </label>
+              <textarea
+                id="hero-message"
+                maxLength={500}
+                rows={3}
+                className="flex w-full rounded-lg border border-input bg-background px-4 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring resize-none"
+                placeholder="Descrivi brevemente cosa ti serve"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </div>
+
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full bg-[hsl(142,70%,45%)] text-white hover:bg-[hsl(142,70%,40%)] rounded-full text-base"
+            >
+              <MessageCircle className="h-5 w-5 mr-2" />
+              Parla con Noi
+            </Button>
+          </form>
         </div>
       </div>
-
-      {/* Supporting text */}
-      <p className="mt-6 text-center text-sm text-muted-foreground max-w-xl mx-auto animate-fade-in-delay-2">
-        Il cliente capisce cosa fai e ti contatta subito, senza confusione.
-      </p>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Hero;
