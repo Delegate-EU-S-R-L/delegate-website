@@ -10,13 +10,13 @@ import FinalCTA from "@/components/FinalCTA";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 
 const Index = () => (
   <>
     <Navbar />
     <Hero />
+    <ScrollFadeIn><ContactSection /></ScrollFadeIn>
     <ScrollFadeIn><Problem /></ScrollFadeIn>
     <ScrollFadeIn><Solution /></ScrollFadeIn>
     <ScrollFadeIn><Packages /></ScrollFadeIn>
@@ -25,9 +25,7 @@ const Index = () => (
     <ScrollFadeIn><WhyDelegate /></ScrollFadeIn>
     <ScrollFadeIn><FinalCTA /></ScrollFadeIn>
     <ScrollFadeIn><FAQ /></ScrollFadeIn>
-    <ScrollFadeIn><ContactSection /></ScrollFadeIn>
     <Footer />
-    <WhatsAppButton />
   </>
 );
 
