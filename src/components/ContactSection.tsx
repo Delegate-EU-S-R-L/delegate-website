@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const ACTIVITY_OPTIONS = [
   "Sito web professionale",
@@ -32,7 +33,10 @@ const selectClass =
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [goals, setGoals] = useState<string[]>([]);
+  const [name, setName] = useState("");
 
   const toggleGoal = (goal: string) => {
     setGoals((prev) =>
@@ -42,14 +46,46 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Future: send data via email API
-    setSubmitted(true);
+    setSending(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const { error: fnError } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.get("name") as string,
+          company: formData.get("company") as string,
+          email: formData.get("email") as string,
+          phone: formData.get("phone") as string,
+          activity: formData.get("activity") as string,
+          need: formData.get("need") as string,
+          existing_site: formData.get("existing_site") as string,
+          goals,
+          materials: formData.get("materials") as string,
+          description: formData.get("description") as string,
+        },
+      });
+
+      if (fnError) throw fnError;
+      setSubmitted(true);
+    } catch (err: unknown) {
+      console.error(err);
+      setError("Errore nell'invio. Riprova o scrivici su WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
+
+  const whatsappMessage = encodeURIComponent(
+    `Ciao, sono ${name || "[Nome]"}. Ho visto il vostro sito e vorrei informazioni per creare un sito web.`
+  );
 
   return (
     <section id="contatto" className="py-20 md:py-28">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
             Parliamone
           </h2>
@@ -57,49 +93,27 @@ const ContactSection = () => {
             Spiegaci cosa ti serve. Ti rispondiamo in modo semplice e diretto.
           </p>
 
-          <div className="mt-14 grid md:grid-cols-2 gap-10">
-            {/* Column 1 — WhatsApp direct */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
-              <p className="text-foreground font-medium text-lg">
-                Vuoi fare prima? Scrivici direttamente su WhatsApp.
-              </p>
-              <Button
-                asChild
-                size="lg"
-                className="bg-[hsl(142,70%,45%)] text-white hover:bg-[hsl(142,70%,40%)] rounded-full px-8 text-base w-full sm:w-auto"
-              >
-                <a
-                  href="https://wa.me/393513317239"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Scrivi su WhatsApp
-                </a>
-              </Button>
-
-              <div className="pt-4">
-                <a
-                  href="mailto:info@delegateitalia.com"
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Mail className="h-4 w-4" />
-                  info@delegateitalia.com
-                </a>
-              </div>
-            </div>
-
-            {/* Column 2 — Structured form */}
+          <div className="mt-14 grid md:grid-cols-[1fr_320px] gap-10">
+            {/* Column 1 — Form */}
             <div>
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Row 1 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="c-name" className="block text-sm font-medium text-foreground mb-1">
                         Nome e Cognome *
                       </label>
-                      <input id="c-name" name="name" type="text" required maxLength={100} className={inputClass} placeholder="Il tuo nome completo" />
+                      <input
+                        id="c-name"
+                        name="name"
+                        type="text"
+                        required
+                        maxLength={100}
+                        className={inputClass}
+                        placeholder="Il tuo nome completo"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
                     </div>
                     <div>
                       <label htmlFor="c-company" className="block text-sm font-medium text-foreground mb-1">
@@ -109,7 +123,6 @@ const ContactSection = () => {
                     </div>
                   </div>
 
-                  {/* Row 2 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1">
@@ -125,7 +138,6 @@ const ContactSection = () => {
                     </div>
                   </div>
 
-                  {/* Activity type */}
                   <div>
                     <label htmlFor="c-activity" className="block text-sm font-medium text-foreground mb-1">
                       Che tipo di attività hai?
@@ -133,7 +145,6 @@ const ContactSection = () => {
                     <input id="c-activity" name="activity" type="text" maxLength={150} className={inputClass} placeholder="Es. elettricista, idraulico, bar, negozio, trasporti..." />
                   </div>
 
-                  {/* Row 3 — selects */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="c-need" className="block text-sm font-medium text-foreground mb-1">
@@ -159,7 +170,6 @@ const ContactSection = () => {
                     </div>
                   </div>
 
-                  {/* Goals checkboxes */}
                   <div>
                     <p className="block text-sm font-medium text-foreground mb-2">
                       Cosa vuoi che faccia il sito?
@@ -179,7 +189,6 @@ const ContactSection = () => {
                     </div>
                   </div>
 
-                  {/* Materials */}
                   <div>
                     <label htmlFor="c-materials" className="block text-sm font-medium text-foreground mb-1">
                       Hai già logo, foto e testi?
@@ -192,7 +201,6 @@ const ContactSection = () => {
                     </select>
                   </div>
 
-                  {/* Description */}
                   <div>
                     <label htmlFor="c-desc" className="block text-sm font-medium text-foreground mb-1">
                       Descrivi brevemente cosa ti serve *
@@ -208,12 +216,17 @@ const ContactSection = () => {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-destructive">{error}</p>
+                  )}
+
                   <Button
                     type="submit"
                     size="lg"
+                    disabled={sending}
                     className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full text-base"
                   >
-                    Invia richiesta
+                    {sending ? "Invio in corso..." : "Invia richiesta"}
                   </Button>
                 </form>
               ) : (
@@ -223,6 +236,39 @@ const ContactSection = () => {
                   </p>
                 </div>
               )}
+            </div>
+
+            {/* Column 2 — WhatsApp box */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-card border border-border rounded-xl p-6 space-y-4">
+                <h3 className="text-lg font-semibold text-foreground">
+                  Preferisci scriverci subito?
+                </h3>
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full bg-[hsl(142,70%,45%)] text-white hover:bg-[hsl(142,70%,40%)] rounded-full text-base"
+                >
+                  <a
+                    href={`https://wa.me/393513317239?text=${whatsappMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="h-5 w-5 mr-2" />
+                    Scrivici su WhatsApp
+                  </a>
+                </Button>
+              </div>
+
+              <div>
+                <a
+                  href="mailto:info@delegateitalia.com"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  info@delegateitalia.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
