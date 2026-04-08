@@ -10,7 +10,6 @@ import FinalCTA from "@/components/FinalCTA";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 
 const Index = () => (
