@@ -6,16 +6,19 @@ import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts'
 
 const GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend'
 
+const optionalStr = (max: number) =>
+  z.preprocess((v) => (v == null ? '' : v), z.string().max(max)).default('')
+
 const BodySchema = z.object({
   name: z.string().min(1).max(100),
-  company: z.string().max(100).optional().default(''),
+  company: optionalStr(100),
   email: z.string().email().max(255),
   phone: z.string().min(1).max(20),
-  activity: z.string().max(150).optional().default(''),
+  activity: optionalStr(150),
   need: z.string().min(1).max(200),
-  existing_site: z.string().max(100).optional().default(''),
-  goals: z.array(z.string()).optional().default([]),
-  materials: z.string().max(100).optional().default(''),
+  existing_site: optionalStr(100),
+  goals: z.preprocess((v) => (v == null ? [] : v), z.array(z.string())).default([]),
+  materials: optionalStr(100),
   description: z.string().min(1).max(500),
 })
 
