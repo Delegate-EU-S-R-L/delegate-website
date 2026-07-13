@@ -1,21 +1,21 @@
 import { MessageCircle, PenTool, Rocket, Users, CheckCircle } from "lucide-react";
 
 const steps = [
-  { icon: MessageCircle, title: "Parliamo", desc: "Ci racconti la tua attività e cosa ti serve." },
-  { icon: PenTool, title: "Creiamo il sito", desc: "Lo progettiamo su misura per te." },
-  { icon: Rocket, title: "Mettiamo online", desc: "Il tuo sito è pronto e visibile a tutti." },
-  { icon: Users, title: "I clienti ti trovano", desc: "Ti contattano facilmente dal sito." },
-  { icon: CheckCircle, title: "Tutto in ordine", desc: "Gestisci le richieste senza confusione." },
+  { icon: MessageCircle, title: "We talk", desc: "You tell us about your business and what you need." },
+  { icon: PenTool, title: "We build the site", desc: "We design it around your business." },
+  { icon: Rocket, title: "We take it live", desc: "Your site is ready and visible to everyone." },
+  { icon: Users, title: "Customers find you", desc: "They get in touch easily through your site." },
+  { icon: CheckCircle, title: "All under control", desc: "Manage enquiries without any confusion." },
 ];
 
 const HowItWorks = () => (
   <section id="come-funziona" className="py-20 md:py-28 bg-secondary/30">
     <div className="container mx-auto px-4 lg:px-8">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-        Come funziona
+        How it works
       </h2>
       <p className="mt-4 text-center text-muted-foreground max-w-xl mx-auto">
-        Cinque passi semplici. Nessuna complicazione.
+        Five simple steps. No complications.
       </p>
 
       <div className="mt-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 max-w-5xl mx-auto">
@@ -25,7 +25,7 @@ const HowItWorks = () => (
               <s.icon className="h-6 w-6 text-primary" />
             </div>
             <div className="md:text-center">
-              <div className="text-xs font-semibold text-primary mb-1">Passo {i + 1}</div>
+              <div className="text-xs font-semibold text-primary mb-1">Step {i + 1}</div>
               <h3 className="font-semibold text-foreground text-sm">{s.title}</h3>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{s.desc}</p>
             </div>
