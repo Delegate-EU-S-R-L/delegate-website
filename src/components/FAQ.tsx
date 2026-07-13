@@ -7,24 +7,24 @@ import {
 
 const faqs = [
   {
-    q: "Come funziona?",
-    a: "Parliamo insieme della tua attività, capiamo cosa ti serve e realizziamo un sito semplice e professionale su misura per te.",
+    q: "How does it work?",
+    a: "We talk through your business together, figure out what you need, and build a simple, professional site tailored to you.",
   },
   {
-    q: "Venite da noi o si fa tutto online?",
-    a: "Possiamo fare tutto online oppure venire direttamente da te per capire meglio la tua attività e raccogliere informazioni.",
+    q: "Do you come to us or is it all done online?",
+    a: "We can handle everything online, or come to you in person to better understand your business and gather the information we need.",
   },
   {
-    q: "In quanto tempo è pronto il sito?",
-    a: "Di solito tra 5 e 10 giorni lavorativi, in base alla complessità e alla velocità con cui raccogliamo i contenuti.",
+    q: "How long does it take to have the site ready?",
+    a: "Usually between 5 and 10 working days, depending on the complexity and how quickly we gather your content.",
   },
   {
-    q: "Quanto costa?",
-    a: "Puoi scegliere tra pagamento unico oppure soluzione mensile. Ti spieghiamo tutto in modo chiaro durante la consulenza.",
+    q: "How much does it cost?",
+    a: "You can choose between a one-off payment or a monthly plan. We'll explain everything clearly during the consultation.",
   },
   {
-    q: "Ci sono costi mensili?",
-    a: "Sì, il mantenimento parte da 79€/mese e include hosting, gestione tecnica e fino a 2 modifiche leggere al mese.",
+    q: "Are there any monthly costs?",
+    a: "Yes, maintenance starts from €79/month and includes hosting, technical management and up to 2 minor updates per month.",
   },
 ];
 
@@ -33,7 +33,7 @@ const FAQ = () => (
     <div className="container mx-auto px-4 lg:px-8">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-          Domande frequenti
+          Frequently asked questions
         </h2>
 
         <Accordion type="single" collapsible className="mt-12">
