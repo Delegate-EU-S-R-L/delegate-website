@@ -6,17 +6,17 @@ const cases = [
   {
     name: "MotoreDiretto",
     image: motoredirettoImg,
-    desc: "A mobile car maintenance service that needed to receive quick enquiries from customers.",
-    why: "Simple structure with WhatsApp front and centre to capture immediate requests.",
-    result: "Customers now reach out directly from the site, without confusing phone calls.",
+    desc: "Servizio manutenzione auto a domicilio con necessità di ricevere richieste rapide dai clienti.",
+    why: "Struttura semplice con WhatsApp subito visibile per ricevere richieste immediate.",
+    result: "Clienti che contattano direttamente dal sito senza passare da telefonate confuse.",
     url: "https://www.motorediretto.com/",
   },
   {
     name: "Sangiorgi Trasporti",
     image: sangiorgiImg,
-    desc: "A haulage company that needed a professional online presence.",
-    why: "A polished layout designed to convey trust to business clients.",
-    result: "A clear online presence and much tidier contact requests.",
+    desc: "Azienda di trasporti che aveva bisogno di presentarsi in modo professionale online.",
+    why: "Layout professionale pensato per trasmettere affidabilità a clienti aziendali.",
+    result: "Presenza online chiara e richieste di contatto più ordinate.",
     url: "https://sangiorgitrasporti.com/",
   },
 ];
@@ -25,10 +25,10 @@ const CaseStudies = () => (
   <section id="esempi" className="py-20 md:py-28">
     <div className="container mx-auto px-4 lg:px-8">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-        Who has already chosen us
+        Chi ci ha già scelto
       </h2>
       <p className="mt-4 text-center text-muted-foreground max-w-xl mx-auto">
-        A few examples of businesses we've helped.
+        Alcuni esempi di attività che abbiamo aiutato.
       </p>
 
       <div className="mt-14 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -40,30 +40,30 @@ const CaseStudies = () => (
             {/* Screenshot */}
             <img
               src={c.image}
-              alt={`Screenshot of the ${c.name} website`}
+              alt={`Screenshot del sito ${c.name}`}
               className="w-full h-48 object-cover object-top"
               loading="lazy"
             />
 
             <div className="p-6 space-y-4">
-              {/* Project name */}
+              {/* Nome progetto */}
               <h3 className="text-lg font-bold text-foreground">{c.name}</h3>
 
-              {/* Description */}
+              {/* Descrizione */}
               <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
 
-              {/* Why it was done this way */}
+              {/* Perché è stato fatto così */}
               <div className="bg-muted/50 rounded-lg p-4">
                 <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Why we built it this way
+                  Perché è stato fatto così
                 </span>
                 <p className="mt-1 text-sm text-foreground">{c.why}</p>
               </div>
 
-              {/* Result */}
+              {/* Risultato */}
               <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4">
                 <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                  Result
+                  Risultato
                 </span>
                 <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-300">{c.result}</p>
               </div>
@@ -75,7 +75,7 @@ const CaseStudies = () => (
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
               >
-                Visit the site
+                Guarda il sito
                 <ExternalLink className="h-4 w-4" />
               </a>
             </div>

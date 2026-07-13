@@ -5,10 +5,10 @@ const FinalCTA = () => (
     <div className="container mx-auto px-4 lg:px-8">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-          Want a simple, professional website?
+          Vuoi un sito semplice e professionale?
         </h2>
         <p className="mt-4 text-muted-foreground text-lg">
-          Tell us about your business. We'll get back to you — no strings attached.
+          Parlaci della tua attività. Ti ricontattiamo noi, senza impegno.
         </p>
 
         {/* Simple contact form */}
@@ -21,14 +21,14 @@ const FinalCTA = () => (
             const name = formData.get("name") as string;
             const message = formData.get("message") as string;
             const whatsappMsg = encodeURIComponent(
-              `Hi, I'm ${name}. ${message} (Tel: ${phone})`
+              `Ciao, sono ${name}. ${message} (Tel: ${phone})`
             );
             window.open(`https://wa.me/393513317239?text=${whatsappMsg}`, "_blank");
           }}
         >
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
-              Name
+              Nome
             </label>
             <input
               id="name"
@@ -37,12 +37,12 @@ const FinalCTA = () => (
               required
               maxLength={100}
               className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              placeholder="Your name"
+              placeholder="Il tuo nome"
             />
           </div>
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">
-              Phone
+              Telefono
             </label>
             <input
               id="phone"
@@ -51,12 +51,12 @@ const FinalCTA = () => (
               required
               maxLength={20}
               className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              placeholder="Your phone number"
+              placeholder="Il tuo numero"
             />
           </div>
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
-              What do you need?
+              Di cosa hai bisogno?
             </label>
             <textarea
               id="message"
@@ -65,11 +65,11 @@ const FinalCTA = () => (
               maxLength={500}
               rows={3}
               className="flex w-full rounded-lg border border-input bg-background px-4 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring resize-none"
-              placeholder="Briefly describe your business and what you need"
+              placeholder="Descrivici brevemente la tua attività e cosa ti serve"
             />
           </div>
           <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full text-base">
-            Talk to Delegate
+            Parla con Delegate
           </Button>
         </form>
       </div>

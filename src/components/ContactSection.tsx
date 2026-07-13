@@ -4,25 +4,25 @@ import { MessageCircle, Mail } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const ACTIVITY_OPTIONS = [
-  "Professional website",
-  "Website + contact enquiries",
-  "I'm not sure, I'd like advice",
+  "Sito web professionale",
+  "Sito + richieste contatto",
+  "Non sono sicuro, voglio un consiglio",
 ];
 
-const EXISTING_SITE_OPTIONS = ["No", "Yes, but it's outdated", "Yes, but I want to rebuild it"];
+const EXISTING_SITE_OPTIONS = ["No", "Sì, ma è vecchio", "Sì, ma voglio rifarlo"];
 
 const MATERIALS_OPTIONS = [
-  "Yes, I have everything",
-  "I have some of it",
-  "No, I need help",
+  "Sì, ho già tutto",
+  "Ho qualcosa",
+  "No, mi serve aiuto",
 ];
 
 const GOALS = [
-  "Be found online",
-  "Receive information requests",
-  "Receive quote requests",
-  "Let people contact me via WhatsApp",
-  "Showcase my services professionally",
+  "Farmi trovare online",
+  "Ricevere richieste informazioni",
+  "Ricevere richieste preventivo",
+  "Far contattare via WhatsApp",
+  "Mostrare i miei servizi in modo professionale",
 ];
 
 const inputClass =
@@ -72,14 +72,14 @@ const ContactSection = () => {
       setSubmitted(true);
     } catch (err: unknown) {
       console.error(err);
-      setError("Something went wrong. Please try again or message us on WhatsApp.");
+      setError("Errore nell'invio. Riprova o scrivici su WhatsApp.");
     } finally {
       setSending(false);
     }
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hi, I'm ${name || "[Name]"}. I saw your website and I'd like some information about building a website.`
+    `Ciao, sono ${name || "[Nome]"}. Ho visto il vostro sito e vorrei informazioni per creare un sito web.`
   );
 
   return (
@@ -87,10 +87,10 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-            Let's talk
+            Parliamone
           </h2>
           <p className="mt-4 text-center text-muted-foreground text-lg max-w-xl mx-auto">
-            Tell us what you need. We'll reply simply and directly.
+            Spiegaci cosa ti serve. Ti rispondiamo in modo semplice e diretto.
           </p>
 
           <div className="mt-14 grid md:grid-cols-[1fr_320px] gap-10">
@@ -101,7 +101,7 @@ const ContactSection = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="c-name" className="block text-sm font-medium text-foreground mb-1">
-                        Full name *
+                        Nome e Cognome *
                       </label>
                       <input
                         id="c-name"
@@ -110,16 +110,16 @@ const ContactSection = () => {
                         required
                         maxLength={100}
                         className={inputClass}
-                        placeholder="Your full name"
+                        placeholder="Il tuo nome completo"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     <div>
                       <label htmlFor="c-company" className="block text-sm font-medium text-foreground mb-1">
-                        Company
+                        Azienda
                       </label>
-                      <input id="c-company" name="company" type="text" maxLength={100} className={inputClass} placeholder="Your business name" />
+                      <input id="c-company" name="company" type="text" maxLength={100} className={inputClass} placeholder="Nome della tua attività" />
                     </div>
                   </div>
 
@@ -128,11 +128,11 @@ const ContactSection = () => {
                       <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1">
                         Email *
                       </label>
-                      <input id="c-email" name="email" type="email" required maxLength={255} className={inputClass} placeholder="email@company.com" />
+                      <input id="c-email" name="email" type="email" required maxLength={255} className={inputClass} placeholder="email@azienda.it" />
                     </div>
                     <div>
                       <label htmlFor="c-phone" className="block text-sm font-medium text-foreground mb-1">
-                        Phone *
+                        Telefono *
                       </label>
                       <input id="c-phone" name="phone" type="tel" required maxLength={20} className={inputClass} placeholder="+39 ..." />
                     </div>
@@ -140,18 +140,18 @@ const ContactSection = () => {
 
                   <div>
                     <label htmlFor="c-activity" className="block text-sm font-medium text-foreground mb-1">
-                      What kind of business do you run?
+                      Che tipo di attività hai?
                     </label>
-                    <input id="c-activity" name="activity" type="text" maxLength={150} className={inputClass} placeholder="e.g. electrician, plumber, café, shop, haulage..." />
+                    <input id="c-activity" name="activity" type="text" maxLength={150} className={inputClass} placeholder="Es. elettricista, idraulico, bar, negozio, trasporti..." />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="c-need" className="block text-sm font-medium text-foreground mb-1">
-                        What do you need? *
+                        Di cosa hai bisogno? *
                       </label>
                       <select id="c-need" name="need" required className={selectClass} defaultValue="">
-                        <option value="" disabled>Select…</option>
+                        <option value="" disabled>Seleziona…</option>
                         {ACTIVITY_OPTIONS.map((o) => (
                           <option key={o} value={o}>{o}</option>
                         ))}
@@ -159,10 +159,10 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <label htmlFor="c-existing" className="block text-sm font-medium text-foreground mb-1">
-                        Do you already have a website?
+                        Hai già un sito web?
                       </label>
                       <select id="c-existing" name="existing_site" className={selectClass} defaultValue="">
-                        <option value="" disabled>Select…</option>
+                        <option value="" disabled>Seleziona…</option>
                         {EXISTING_SITE_OPTIONS.map((o) => (
                           <option key={o} value={o}>{o}</option>
                         ))}
@@ -172,7 +172,7 @@ const ContactSection = () => {
 
                   <div>
                     <p className="block text-sm font-medium text-foreground mb-2">
-                      What should the site do?
+                      Cosa vuoi che faccia il sito?
                     </p>
                     <div className="space-y-2">
                       {GOALS.map((g) => (
@@ -191,10 +191,10 @@ const ContactSection = () => {
 
                   <div>
                     <label htmlFor="c-materials" className="block text-sm font-medium text-foreground mb-1">
-                      Do you already have a logo, photos and copy?
+                      Hai già logo, foto e testi?
                     </label>
                     <select id="c-materials" name="materials" className={selectClass} defaultValue="">
-                      <option value="" disabled>Select…</option>
+                      <option value="" disabled>Seleziona…</option>
                       {MATERIALS_OPTIONS.map((o) => (
                         <option key={o} value={o}>{o}</option>
                       ))}
@@ -203,7 +203,7 @@ const ContactSection = () => {
 
                   <div>
                     <label htmlFor="c-desc" className="block text-sm font-medium text-foreground mb-1">
-                      Briefly describe what you need *
+                      Descrivi brevemente cosa ti serve *
                     </label>
                     <textarea
                       id="c-desc"
@@ -212,7 +212,7 @@ const ContactSection = () => {
                       maxLength={500}
                       rows={3}
                       className={`${inputClass} resize-none`}
-                      placeholder="Tell us about your business and what you'd like from the site"
+                      placeholder="Spiegaci la tua attività e cosa vorresti dal sito"
                     />
                   </div>
 
@@ -226,13 +226,13 @@ const ContactSection = () => {
                     disabled={sending}
                     className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full text-base"
                   >
-                    {sending ? "Sending..." : "Send request"}
+                    {sending ? "Invio in corso..." : "Invia richiesta"}
                   </Button>
                 </form>
               ) : (
                 <div className="bg-card border border-border rounded-xl p-8 text-center space-y-3">
                   <p className="text-foreground font-medium">
-                    ✅ Request sent. We'll get back to you shortly.
+                    ✅ Richiesta inviata. Ti ricontatteremo a breve.
                   </p>
                 </div>
               )}
@@ -242,7 +242,7 @@ const ContactSection = () => {
             <div className="flex flex-col gap-6">
               <div className="bg-card border border-border rounded-xl p-6 space-y-4">
                 <h3 className="text-lg font-semibold text-foreground">
-                  Prefer to message us right away?
+                  Preferisci scriverci subito?
                 </h3>
                 <Button
                   asChild
@@ -255,7 +255,7 @@ const ContactSection = () => {
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="h-5 w-5 mr-2" />
-                    Message us on WhatsApp
+                    Scrivici su WhatsApp
                   </a>
                 </Button>
               </div>

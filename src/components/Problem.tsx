@@ -1,20 +1,20 @@
 import { Globe, Clock, MessageSquare, UserX } from "lucide-react";
 
 const problems = [
-  { icon: Globe, title: "You don't have a website", desc: "Customers look for you online, but they can't find you." },
-  { icon: Clock, title: "You have an outdated site", desc: "Your site no longer represents you and doesn't work well on mobile." },
-  { icon: MessageSquare, title: "Contacts scattered everywhere", desc: "Between WhatsApp, calls and messages, you lose important enquiries." },
-  { icon: UserX, title: "An unprofessional image", desc: "Customers don't trust you if your online presence looks neglected." },
+  { icon: Globe, title: "Non hai un sito web", desc: "I clienti ti cercano online, ma non ti trovano." },
+  { icon: Clock, title: "Hai un sito vecchio", desc: "Il tuo sito non ti rappresenta più e non funziona bene da cellulare." },
+  { icon: MessageSquare, title: "Contatti sparsi ovunque", desc: "Tra WhatsApp, telefonate e messaggi, perdi richieste importanti." },
+  { icon: UserX, title: "Immagine poco professionale", desc: "I clienti non si fidano se la tua presenza online è trascurata." },
 ];
 
 const Problem = () => (
   <section id="problema" className="py-20 md:py-28">
     <div className="container mx-auto px-4 lg:px-8">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground">
-        Does this sound familiar?
+        Ti riconosci in queste situazioni?
       </h2>
       <p className="mt-4 text-center text-muted-foreground max-w-xl mx-auto">
-        Many businesses lose customers every day for these reasons. If you recognise yourself, we can help.
+        Molte attività perdono clienti ogni giorno per questi motivi. Se ti ritrovi, possiamo aiutarti.
       </p>
       <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {problems.map((p) => (

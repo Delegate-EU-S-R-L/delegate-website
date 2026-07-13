@@ -3,11 +3,11 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { label: "Problem", href: "#problema" },
-  { label: "Solution", href: "#soluzione" },
-  { label: "Packages", href: "#pacchetti" },
-  { label: "How it works", href: "#come-funziona" },
-  { label: "Examples", href: "#esempi" },
+  { label: "Problema", href: "#problema" },
+  { label: "Soluzione", href: "#soluzione" },
+  { label: "Pacchetti", href: "#pacchetti" },
+  { label: "Come funziona", href: "#come-funziona" },
+  { label: "Esempi", href: "#esempi" },
 ];
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-6">
-            <a href="#contatto">Request a consultation</a>
+            <a href="#contatto">Richiedi una consulenza</a>
           </Button>
         </div>
 
@@ -56,7 +56,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full">
-            <a href="#contatto" onClick={() => setOpen(false)}>Request a consultation</a>
+            <a href="#contatto" onClick={() => setOpen(false)}>Richiedi una consulenza</a>
           </Button>
         </div>
       )}
