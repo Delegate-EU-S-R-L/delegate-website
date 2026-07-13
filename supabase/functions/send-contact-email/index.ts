@@ -76,9 +76,9 @@ Deno.serve(async (req) => {
         'X-Connection-Api-Key': RESEND_API_KEY,
       },
       body: JSON.stringify({
-        from: 'Delegate Sito <onboarding@resend.dev>',
+        from: 'Delegate Website <onboarding@resend.dev>',
         to: ['info@delegateitalia.com'],
-        subject: `Nuova richiesta: ${d.name} — ${d.need}`,
+        subject: `New enquiry: ${d.name} — ${d.need}`,
         html,
         reply_to: d.email,
       }),
